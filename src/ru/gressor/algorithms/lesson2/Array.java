@@ -36,7 +36,7 @@ public class Array {
     }
 
     private void increaseCapacity() {
-        if (arr == null || arr.length == 0) {
+        if (arr.length == 0) {
             arr = new int[1];
         } else {
             int[] temp = arr;
