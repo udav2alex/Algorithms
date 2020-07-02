@@ -1,5 +1,6 @@
 package ru.gressor.algorithms.lesson3;
 
+import java.util.Arrays;
 import java.util.NoSuchElementException;
 
 public class Queue {
@@ -29,6 +30,11 @@ public class Queue {
         return items;
     }
 
+    void show() {
+        System.out.printf("head: %d, tail: %d, size: %d\n", head, tail, items);
+        System.out.println(Arrays.toString(queue));
+    }
+
     public void insert(int value) {
         if (isFull()) {
             capacity *= 2;
@@ -39,8 +45,9 @@ public class Queue {
                 System.arraycopy(queue, 0, newQ, 0, tail + 1);
                 System.arraycopy(queue, head,
                         newQ, capacity - (queue.length - head),
-                        queue.length - head - 1);
+                        queue.length - head);
             }
+            head = capacity - (queue.length - head);
             queue = newQ;
         }
         if (tail == capacity - 1)
