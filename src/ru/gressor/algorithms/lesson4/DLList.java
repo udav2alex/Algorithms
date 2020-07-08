@@ -31,50 +31,46 @@ public class DLList<T> {
     @Override
     public String toString() {
         if (size == 0) return "[]";
+        iterator.reset();
 
         StringBuilder sb = new StringBuilder("[");
-        Iterator newIterator = new Iterator();
-        while (newIterator.hasNext()) {
-            sb.append(newIterator.next());
+        while (iterator.hasNext()) {
+            sb.append(iterator.next());
             sb.append(", ");
         }
-        sb.append(newIterator.getCurrent());
+        sb.append(iterator.getCurrent());
         sb.append("]");
 
         return sb.toString();
     }
 
     public void addFirst(T value) {
-        Iterator newIterator = new Iterator();
-        newIterator.insertBefore(value);
+        iterator.reset();
+        iterator.insertBefore(value);
     }
 
     public void addLast(T value) {
-        Iterator newIterator = new Iterator();
-        newIterator.resetToTail();
-        newIterator.insertAfter(value);
+        iterator.resetToTail();
+        iterator.insertAfter(value);
     }
 
     public T popFirst() {
-        Iterator newIterator = new Iterator();
-        return newIterator.deleteCurrent();
+         iterator.reset();
+        return iterator.deleteCurrent();
     }
 
     public T popLast() {
-        Iterator newIterator = new Iterator();
-        newIterator.resetToTail();
-        return newIterator.deleteCurrent();
+        iterator.resetToTail();
+        return iterator.deleteCurrent();
     }
 
     public boolean contains(T value) {
-        Iterator newIterator = new Iterator();
-        return newIterator.find(value);
+        return iterator.find(value);
     }
 
     public boolean delete(T value) {
-        Iterator newIterator = new Iterator();
-        boolean result = newIterator.find(value);
-        if (result) newIterator.deleteCurrent();
+        boolean result = iterator.find(value);
+        if (result) iterator.deleteCurrent();
         return result;
     }
 
