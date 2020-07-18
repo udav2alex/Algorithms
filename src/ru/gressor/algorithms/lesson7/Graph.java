@@ -8,7 +8,6 @@ public class Graph<T> {
     private final ArrayList<Vertex> vertices;
     private final int[][] links;
 
-
     private class Vertex {
         T value;
         boolean isVisited;
